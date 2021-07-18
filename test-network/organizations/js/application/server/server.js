@@ -27,8 +27,7 @@ var UserModel;
 // MongoDB 연결 함수
 function connectDB() {
 	//데이터베이스 연결 정보
-	// var databaseUrl = 'mongodb://id:pw@url/DBname';
-	var databaseUrl = 'mongodb://jinsol:sol123@127.0.0.1:27017/hyperledger';
+	var databaseUrl = 'mongodb://id:pw@url/DBname';
 	
 	console.log("Connecting.....");
 	
