@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hyperledger Fabric Token-ERC-20</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <style type="text/css">
+        header {
+            background-color: lightgray;
+            font-size: 20px;
+            padding: 20px;
+        }
+        header, .form-group {
+            margin-bottom: 3%;
+        }
+        .form-group {
+            width: 50%;
+        }
+        #body {
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+        .form-control {
+            margin: 8px;
+        }
+        #right_header {
+            width: 20%;
+            font-size: 15px;
+            margin-right: 0px;
+        }
+        #left_header {
+            width: 40%;
+            margin-left: 0px;
+            display: inline-block;
+        }
+        #id {
+            width: 49%;
+            display: inline-block;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width:100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body ng-app="application" ng-controller="AppCtrl">
+    <header>
+        <div id="left_header">Hyperledger Fabric Token Application</div>
+    </header>
+    <div id="body">
+        <div class="form-group">
+            <label>Get ClientAccountID</label>
+            <h5 style="color:green; margin-bottom: 2%;" id="success_ClientAccountID">{{res_ClientAccountID}}</h5>
+            <input id="ClientAccountID" type="submit" value="Search" class="btn btn-primary" ng-click="ClientAccountID()">
+        </div>
+        <div class="form-group">
+            <label>Get ClientAccountBalance</label>
+            <h5 style="color:green; margin-bottom: 2%;" id="success_ClientAccountBalance">{{res_ClientAccountBalance}}</h5>
+            <input id="ClientAccountBalance" type="submit" value="Search" class="btn btn-primary" ng-click="ClientAccountBalance()">
+        </div>
+        <div class="form-group">
+            <label>Transfer Token</label>
+            <h5 style="color:green; margin-bottom: 2%;" id="success_Transfer">{{res_Transfer}}</h5>
+            <br>
+            Recipient : <input class="form-control" type="text" placeholder="Ex: eDUwOTo6Q049amluc29sLE9VPWNsaWVudCxPPUh5cGVybGVkZ2VyLFNUPU5vcnRoIENhcm9saW5hLEM9VVM6OkNOPWNhLm9yZzEuZXhhbXBsZS5jb20sTz1vcmcxLmV4YW1wbGUuY29tLEw9RHVyaGFtLFNUPU5vcnRoIENhcm9saW5hLEM9VVM=="
+            ng-model="transfer.recipient">
+            Amount : <input class="form-group" type="text" placeholder="Ex: 2000" ng-model="transfer.amount">
+            <br>
+            <input id="Transfer" type="submit" value="Transfer" class="btn btn-primary" ng-click="Transfer()">
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+</html>

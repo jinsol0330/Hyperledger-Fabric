@@ -1,0 +1,95 @@
+---
+name: "js-network"
+
+version: "1.0"
+
+client:
+  organization: Org2
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+        
+channels:
+  mychannel:
+    orderers:
+      - orderer.example.com
+    peers:
+      peer0.org2.example.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+organizations:
+  Org2:
+    mspid: Org2MSP
+    peers:
+      - peer0.org2.example.com
+    certificateAuthorities:
+      - ca-org2
+    adminPrivateKey:
+      path: ../../peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/bd29ebd4fd19e819f477e6de4224fe7607e19d2583e39e570aafd1cb534e7d4f_sk
+    signedCert:
+      path: ../../peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/cert.pem
+
+orderers:
+  orderer.example.com:
+    url: grpcs://localhost:7050
+    grpcOptions:
+      ssl-target-name-override: orderer.example.com
+      grpc-max-send-message-length: 4194304
+    tlsCACerts:
+      # path: ../../ordererOrganizations/example.com/orderers/orderer.example.com/tls/tlscacerts/tls-localhost-9054-ca-orderer.pem
+      pem: 
+         |
+          -----BEGIN CERTIFICATE-----
+          MIICCzCCAbGgAwIBAgIUZO3lV9fcSc4CM2W+f0GSenfOi9AwCgYIKoZIzj0EAwIw
+          YjELMAkGA1UEBhMCVVMxETAPBgNVBAgTCE5ldyBZb3JrMREwDwYDVQQHEwhOZXcg
+          WW9yazEUMBIGA1UEChMLZXhhbXBsZS5jb20xFzAVBgNVBAMTDmNhLmV4YW1wbGUu
+          Y29tMB4XDTIxMDYyODEyMDgwMFoXDTM2MDYyNDEyMDgwMFowYjELMAkGA1UEBhMC
+          VVMxETAPBgNVBAgTCE5ldyBZb3JrMREwDwYDVQQHEwhOZXcgWW9yazEUMBIGA1UE
+          ChMLZXhhbXBsZS5jb20xFzAVBgNVBAMTDmNhLmV4YW1wbGUuY29tMFkwEwYHKoZI
+          zj0CAQYIKoZIzj0DAQcDQgAERP65UPTe8t4PDB6jTeJXUVQyqo3tudoYPpF4uSG7
+          gx+m0GBkEscFBbUjxd5DuO7ss/mo/77KpGl6pkr/fCXq/6NFMEMwDgYDVR0PAQH/
+          BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYEFMaOmMp/cOdWIJq/
+          X3di13hi9U0gMAoGCCqGSM49BAMCA0gAMEUCIQDn5d98Jj8jFR5mdiBcTkaNB2q1
+          s2UwdUQYEPsV3TRq+gIgb4lwc+s5nh23leJlhprRfRo5LMJ2MV8Wi7GF1sDplJU=
+          -----END CERTIFICATE-----
+
+peers:
+  peer0.org2.example.com:
+    url: grpcs://localhost:9051
+    grpcOptions:
+      ssl-target-name-override: peer0.org2.example.com
+      grpc.keepalive_time_ms: 600000
+    tlsCACerts:
+      # path: ../../peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/tlscacerts/tls-localhost-8054-ca-org2.pem
+      pem: 
+         |
+          -----BEGIN CERTIFICATE-----
+          MIICHjCCAcWgAwIBAgIUSKW3+Aimp4jo4z8i7MFsts4Eu1gwCgYIKoZIzj0EAwIw
+          bDELMAkGA1UEBhMCVUsxEjAQBgNVBAgTCUhhbXBzaGlyZTEQMA4GA1UEBxMHSHVy
+          c2xleTEZMBcGA1UEChMQb3JnMi5leGFtcGxlLmNvbTEcMBoGA1UEAxMTY2Eub3Jn
+          Mi5leGFtcGxlLmNvbTAeFw0yMTA2MjgxMjA4MDBaFw0zNjA2MjQxMjA4MDBaMGwx
+          CzAJBgNVBAYTAlVLMRIwEAYDVQQIEwlIYW1wc2hpcmUxEDAOBgNVBAcTB0h1cnNs
+          ZXkxGTAXBgNVBAoTEG9yZzIuZXhhbXBsZS5jb20xHDAaBgNVBAMTE2NhLm9yZzIu
+          ZXhhbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQUY0CcAJ0TvhkB
+          fISnTroeyFRXAg+7IGQtDVq/gnDL4nLNvGf9D4YRNStqTWTxwbVnogDfQWh7XPlT
+          tBlU960jo0UwQzAOBgNVHQ8BAf8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB/wIBATAd
+          BgNVHQ4EFgQUcJYs8gMFF+sLkVYpYsWi1cETqZcwCgYIKoZIzj0EAwIDRwAwRAIg
+          AOz2dZb9SJgXXhYasRnRzARnALfmOo0rGRUImLZj1AQCIFFajTXejrEUn5wDWbKH
+          eK7KGc3PEtQkgwfK/KymX1iB
+          -----END CERTIFICATE-----
+
+certificateAuthorities:
+  ca-org2:
+    url: https://localhost:8054
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: ../../peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem
+    registrar:
+      - enrollId: admin
+        enrollSecret: adminpw
+    caName: caorg2
