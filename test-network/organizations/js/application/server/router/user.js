@@ -23,12 +23,12 @@ var login = function(req,res) {
 			
 			if(docs) {
 				if (paramId == 'jinsol') {
-					res.redirect('/js_index.html');
+					res.redirect('/user1.html');
 					id = paramId;
 					console.log(id);
 				}
 				if (paramId == 'yulhee') {
-					res.redirect('/yh_index.html');
+					res.redirect('/user2.html');
 					id = paramId;
 					console.log(id);
 				}
@@ -134,7 +134,7 @@ var addUser = function(database, username, password, callback) {
 		callback(null,user);
 	});
 	//users 컬렉션 참조
-	var users = database.collection('userinfo');
+	var users = database.collection('#');
 	//id, password을 사용해 사용자 추가
 	users.insertMany([{"username":username, "password":password}], function(err, result) {
 		if(err) {
@@ -152,17 +152,15 @@ var addUser = function(database, username, password, callback) {
 	})
 }
 
-// module.exports.init = init;
-// module.exports.login = login;
-// module.exports.adduser = adduser;
-
-
 module.exports = {
 	init:init,
 	login:login,
 	adduser:adduser,
-	userid: userid,
-	// userid: 'jinsol',
+	
+	// jinsol로 로그인 할 때는 userid를 jinsol으로
+	// yulhee로 로그인 할 때는 userid를 yulhee로 해야 함
+
+	userid: 'jinsol',
 	// userid: 'yulhee',
 }
 

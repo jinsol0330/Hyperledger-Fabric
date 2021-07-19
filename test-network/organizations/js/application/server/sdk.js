@@ -7,6 +7,7 @@ const { Wallets, Gateway } = require('fabric-network');
 
 
 async function send(type, func, args, res) {
+    var userid = user.userid;
     // console.log(user.userid);
     if (userid == 'jinsol') {
         const wallet = await Wallets.newFileSystemWallet('../../wallet');

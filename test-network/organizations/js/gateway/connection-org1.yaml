@@ -30,8 +30,10 @@ organizations:
       - ca-org1
     adminPrivateKey :
       path: ../../peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/#
-      path: ../../peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/cert.pem
-
+      # path: ../../peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/cert.pem
+      pem:
+         |
+          #
 orderers:
   orderer.example.com:
     url: grpcs://localhost:7050
