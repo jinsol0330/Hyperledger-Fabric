@@ -13,7 +13,9 @@ Nodejs : v14.15.4)
 npm : v6.14.10)
 JAVA JDK : v1.8.0_292
 Gradle : v4.4.1
+
 Fabric : v2.2.0
+
 Fabric-CA : v1.4.8
 
 
