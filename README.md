@@ -78,11 +78,7 @@
 
 <br>
 
-### 6️⃣ Database 설정
-
-<br>
-
-### 7️⃣ 실행
+### 6️⃣ 실행
 ➡️ `cd /js/application/server` <br>
 ➡️ `node server.js`
 
